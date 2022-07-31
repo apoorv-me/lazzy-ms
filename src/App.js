@@ -12,12 +12,12 @@ import Register from "./pages/Register";
 import Explore from "./pages/Explore";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-import UnityGallery from "./pages/Unity";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { logIn } from "./slices/userSlice";
 import ViewGallery from "./pages/ViewGallery";
 import CreateUnityGallery from "./pages/CreateUnityGallery";
+import UnityGallery from "./pages/UnityGallery";
 
 const routes = [
   {
@@ -91,6 +91,7 @@ const routes = [
 ]
 function App() {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     if(localStorage.getItem('accessToken')){
         const user = JSON.parse(

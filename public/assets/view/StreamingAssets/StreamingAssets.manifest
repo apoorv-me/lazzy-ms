@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 141547481
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: template1
+      Dependencies: {}

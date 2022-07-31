@@ -145,7 +145,7 @@ export default function ViewGallery() {
                         <h4> Welcome to my Nft art collection...</h4>
                         <div className="mt-4">
                             <Link to={'/unity'} className="gallery-content-btn">Share</Link>
-                            <Link to={'/create-unity-gallery'} className="gallery-content-btn">Enter</Link>
+                            <Link to={'/unity'} className="gallery-content-btn">Enter</Link>
                         </div>
                     </div>
                 </div>

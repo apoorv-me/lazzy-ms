@@ -1,14 +1,14 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams,Link ,useNavigate} from 'react-router-dom';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import GalleryCard from '../components/GalleryCard';
 import Popup from '../components/Popup';
 import { getTheme } from '../services';
 import { selectUser } from '../slices/userSlice';
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -18,6 +18,8 @@ export default function Profile() {
   const {isLoggedIn} = useSelector(state => state.user);
   const profile = useSelector(selectUser);
   const { id } = useParams();
+  
+
   // const [profile, setProfile] = useState({
   //   picture: 'https://gigaland.io/images/author_single/author_thumbnail.jpg',
   //   name: 'Monica Lucas',
@@ -219,6 +221,7 @@ export default function Profile() {
       <div className='w-full my-5'>
         <nav className='flex mb-5' aria-label='Tabs'>
           {tabs.map((tab, tabIdx) => (
+            
             <button
               key={tab.name}
               className={classNames(
@@ -230,6 +233,7 @@ export default function Profile() {
             >
               <h2 className='text-xl text-center'>{tab.name}</h2>
             </button>
+            
           ))}
         </nav>
         <Swiper
@@ -286,7 +290,8 @@ export default function Profile() {
 
 function Spaces() {
   const [spaces, setSpaces] = useState([]);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     getTheme()
     .then((res) => {
@@ -303,6 +308,10 @@ function Spaces() {
     { name: 'Collectible', current: false }
   ]);
 
+  const navigateCreateUnity = () => {
+    navigate('/create-unity-gallery');
+  };
+  
   // const [spaces, setSpaces] = useState([
   //   {
   //     name: 'Metaframe HUB 1',
@@ -325,6 +334,8 @@ function Spaces() {
   const handleTabChange = (index) => {
     setTabs(tabs.map((tab, i) => ({ ...tab, current: i === index })));
   };
+
+  
 
   return (
     <div className='flex flex-col items-center justify-center'>
@@ -356,7 +367,8 @@ function Spaces() {
             </nav>
             <div className='mt-8 grid grid-cols-4 gap-4'>
               {spaces.map((space) => (
-                <div className='col-span-1' key={space.name}>
+          
+                <div className='col-span-1' key={space.name} onClick={navigateCreateUnity}>
                   <div className='flex flex-col items-center justify-center h-60 w-40  relative'>
                     <div
                       className='relative rounded-lg w-full h-full bg-fixed bg-center bg-cover bg-no-repeat'
@@ -370,6 +382,7 @@ function Spaces() {
                     </h2>
                   </div>
                 </div>
+                
               ))}
             </div>
           </div>

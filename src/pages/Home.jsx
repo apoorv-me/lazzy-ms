@@ -118,7 +118,7 @@ function Spotlight() {
             <div className='rounded-xl z-10 w-full h-full'>
               <img
                 className='w-full h-full object-cover rounded-xl'
-                src={'img/house.jpg'}
+                src={'img/render-water.jpg'}
                 alt='slide 1'
               />
             </div>

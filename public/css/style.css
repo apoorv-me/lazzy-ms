@@ -12,7 +12,7 @@
 	
 	}
 
-.gallery{width: 100%; height: 100%; background-repeat: no-repeat; background-size: cover;}
+.gallery{width: 100%; height: 100%; position:absolute; background-repeat: no-repeat; background-size: cover;}
 .gallery::before {
 	content: "";
 	width: 100%;
