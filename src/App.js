@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Layout from "./layout/Layout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -18,121 +18,128 @@ import { logIn } from "./slices/userSlice";
 import ViewGallery from "./pages/ViewGallery";
 import CreateUnityGallery from "./pages/CreateUnityGallery";
 import UnityGallery from "./pages/UnityGallery";
-import { ContactUS } from './pages/ContactUS';
-import { FAQ } from './pages/FAQ';
+import { ContactUS } from "./pages/ContactUS";
+import { FAQ } from "./pages/FAQ";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     exact: true,
-    component: <Layout view={<Home/>} title="Metaframes" />
+    component: <Layout view={<Home />} title="Metaframes" />,
   },
   {
-    path: '/connect-wallet',
+    path: "/connect-wallet",
     exact: true,
-    component: <Layout view={<Wallet/>} title="Metaframes" heading="Wallet"/>
+    component: <Layout view={<Wallet />} title="Metaframes" heading="Wallet" />,
   },
   {
-    path: '/profile/:id',
+    path: "/profile/:id",
     exact: true,
-    component: <Layout view={<Profile/>} title="Metaframes" />
+    component: <Layout view={<Profile />} title="Metaframes" />,
   },
   {
-    path: '/edit-profile/:id',
+    path: "/edit-profile/:id",
     exact: true,
-    component: <Layout view={<EditProfile/>} title="Metaframes" heading="Edit Profile" />
+    component: (
+      <Layout
+        view={<EditProfile />}
+        title="Metaframes"
+        heading="Edit Profile"
+      />
+    ),
   },
   {
-    path: '/galleries/:id',
+    path: "/galleries/:id",
     exact: true,
-    component: <ViewGallery/>
+    component: <ViewGallery />,
   },
   {
-    path: '/unity',
+    path: "/unity/:id",
     exact: true,
-    component: <UnityGallery/>
+    component: <UnityGallery />,
   },
 
   {
-    path: '/create-unity-gallery',
+    path: "/create-unity-gallery/",
     exact: true,
-    component: <CreateUnityGallery/>
+    component: <CreateUnityGallery />,
   },
 
   {
-    path: '/contact-us',
+    path: "/contact-us",
     exact: true,
-    component: <Layout view={<ContactUS/>} title="Metaframes" isBg/>
+    component: <Layout view={<ContactUS />} title="Metaframes" isBg />,
   },
 
   {
-    path: '/faq',
+    path: "/faq",
     exact: true,
-    component: <Layout view={<FAQ />} title="Metaframes" isBg/>
+    component: <Layout view={<FAQ />} title="Metaframes" isBg />,
   },
 
   {
-    path: '/edit-gallery/:id',
+    path: "/edit-gallery/:id",
     exact: true,
-    component: <Layout view={<EditGallery/>} title="Metaframes" heading="Edit Gallery" />
+    component: (
+      <Layout
+        view={<EditGallery />}
+        title="Metaframes"
+        heading="Edit Gallery"
+      />
+    ),
   },
   {
-    path: '/login',
+    path: "/login",
     exact: true,
-    component: <Layout view={<Login />} title="Metaframes" isBg/>
+    component: <Layout view={<Login />} title="Metaframes" isBg />,
   },
   {
-    path: '/register',
+    path: "/register",
     exact: true,
-    component: <Layout view={<Register />} title="Metaframes" isBg/>
+    component: <Layout view={<Register />} title="Metaframes" isBg />,
   },
   {
-    path: '/explore',
+    path: "/explore",
     exact: true,
-    component: <Layout view={<Explore />} title="Metaframes" heading="Explore"/>
+    component: (
+      <Layout view={<Explore />} title="Metaframes" heading="Explore" />
+    ),
   },
   {
-
-    path: '/forgot-password',
+    path: "/forgot-password",
     exact: true,
-    component: <Layout view={<ForgotPassword />} title="Metaframes" isBg/>
+    component: <Layout view={<ForgotPassword />} title="Metaframes" isBg />,
   },
   {
-    path: '/reset-password',
+    path: "/reset-password",
     exact: true,
-    component: <Layout view={<ResetPassword />} title="Metaframes" isBg/>
+    component: <Layout view={<ResetPassword />} title="Metaframes" isBg />,
   },
-
-]
+];
 function App() {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    if(localStorage.getItem('accessToken')){
-        const user = JSON.parse(
-        localStorage.getItem("user")
-      )
+    if (localStorage.getItem("accessToken")) {
+      const user = JSON.parse(localStorage.getItem("user"));
       dispatch(logIn(user));
     }
-  })
+  });
 
   return (
-    
-      <Router basename={"/metaframe"}>
-        
-        <Routes>
-          {routes.map((route, i) => (
-            <Route
-              key={i}
-              path={route.path}
-              exact={route.exact}
-              element={<>{route.component}</>}
-            />
-          ))}
-          <Route key="404" element={<NotFound />} />
-        </Routes>
-      </Router>
-     
+    <Router basename={"/metaframe"}>
+      <Routes>
+        {routes.map((route, i) => (
+          <Route
+            key={i}
+            path={route.path}
+            exact={route.exact}
+            element={<>{route.component}</>}
+          />
+        ))}
+        <Route key="404" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 

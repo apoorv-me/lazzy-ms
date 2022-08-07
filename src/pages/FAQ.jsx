@@ -66,7 +66,7 @@ export const FAQ = () => {
           <div className="container">
             <div className="row">
               <h3>Faq's</h3>
-              <div className="col-lg-6">
+              <div className="col-lg-12">
                 {faqs.map((faq) => (
                   <FaqCom
                     key={faq.id}
@@ -75,8 +75,6 @@ export const FAQ = () => {
                   />
                 ))}
               </div>
-
-              <div className="col-lg-6"></div>
             </div>
           </div>
         </section>
