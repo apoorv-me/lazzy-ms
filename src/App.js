@@ -18,6 +18,8 @@ import { logIn } from "./slices/userSlice";
 import ViewGallery from "./pages/ViewGallery";
 import CreateUnityGallery from "./pages/CreateUnityGallery";
 import UnityGallery from "./pages/UnityGallery";
+import { ContactUS } from './pages/ContactUS';
+import { FAQ } from './pages/FAQ';
 
 const routes = [
   {
@@ -56,6 +58,19 @@ const routes = [
     exact: true,
     component: <CreateUnityGallery/>
   },
+
+  {
+    path: '/contact-us',
+    exact: true,
+    component: <Layout view={<ContactUS/>} title="Metaframes" isBg/>
+  },
+
+  {
+    path: '/faq',
+    exact: true,
+    component: <Layout view={<FAQ />} title="Metaframes" isBg/>
+  },
+
   {
     path: '/edit-gallery/:id',
     exact: true,
